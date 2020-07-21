@@ -1,0 +1,18 @@
+.ctrl-outer {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctrl-inner {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.adjustBtn {
+    padding: 5px 10px 5px 10px;
+}

@@ -1,0 +1,35 @@
+#clock-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    width: 100%;
+    padding: 10px;
+    background-color: #eee;
+    box-shadow: 2px 2px 30px #999, 0px 0px 20px #333;
+}
+
+#time-left {
+    font-size: 80px;
+}
+
+#clock-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.clockBtn {
+    margin: 0 15px
+}
+
+
+/* Mobile Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    #time-left {
+      font-size: 60px;
+    }
+}

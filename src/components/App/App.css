@@ -1,0 +1,40 @@
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #444;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 30px;
+}
+
+h1 {
+  font-weight: 800;
+  text-align: center;
+}
+
+#controls-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Mobile Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    #controls-container {
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+}
