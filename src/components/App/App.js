@@ -75,29 +75,28 @@ class App extends React.Component {
         }
       } 
     }
-  }
-    
+  } 
 
-    render() {
-      return (
-        <div id="container" className="shadow-lg bg-white rounded">
-          <h1>Pomodoro Clock</h1>
-          <div id="controls-container">
-            <BreakCtrl breakLength={this.state.breakLength} handleClick={this.handleUpDownClick} />
-            <SeshCtrl sessionLength={this.state.sessionLength} handleClick={this.handleUpDownClick} />
-          </div>
-          <Clock 
-            label={this.state.label} 
-            timerState={this.state.timerState} 
-            sessionLength={this.state.sessionLength}
-            breakLength={this.state.breakLength}
-            timeRemainingMs={this.state.timeRemainingMs} 
-            handleStartStopClick={this.handleStartStopClick} 
-            handleResetClick={this.handleResetClick} 
-          />
+  render() {
+    return (
+      <div id="container" className="shadow-lg bg-white rounded">
+        <h1>Pomodoro Clock</h1>
+        <div id="controls-container">
+          <BreakCtrl breakLength={this.state.breakLength} handleClick={this.handleUpDownClick} />
+          <SeshCtrl sessionLength={this.state.sessionLength} handleClick={this.handleUpDownClick} />
         </div>
-      );
-    }
+        <Clock 
+          label={this.state.label} 
+          timerState={this.state.timerState} 
+          sessionLength={this.state.sessionLength}
+          breakLength={this.state.breakLength}
+          timeRemainingMs={this.state.timeRemainingMs} 
+          handleStartStopClick={this.handleStartStopClick} 
+          handleResetClick={this.handleResetClick} 
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
