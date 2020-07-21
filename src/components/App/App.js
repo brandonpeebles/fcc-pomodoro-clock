@@ -11,7 +11,8 @@ class App extends React.Component {
       label: 'Session',
       timerState: 'paused',
       sessionLength: 25,
-      breakLength: 5
+      breakLength: 5,
+      timeRemainingMs: 25000
     }
     this.handleStartStopClick = this.handleStartStopClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
