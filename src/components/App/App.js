@@ -13,6 +13,7 @@ class App extends React.Component {
       sessionLength: 25,
       breakLength: 5
     }
+    // test for develop branch
     this.handleStartStopClick = this.handleStartStopClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
     this.handleUpDownClick = this.handleUpDownClick.bind(this);
