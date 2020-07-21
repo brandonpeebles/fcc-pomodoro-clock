@@ -34,8 +34,8 @@ class App extends React.Component {
   handleResetClick() {
     return this.setState({
       label: 'Session',
-      timerState: 'paused',
-      timeRemainingMs: this.state.sessionLength * 1000
+      timerState: 'paused'
+      // add a method call to change the timeRemaining state of the clock component
     })
   }
 
@@ -90,7 +90,6 @@ class App extends React.Component {
           timerState={this.state.timerState} 
           sessionLength={this.state.sessionLength}
           breakLength={this.state.breakLength}
-          timeRemainingMs={this.state.timeRemainingMs} 
           handleStartStopClick={this.handleStartStopClick} 
           handleResetClick={this.handleResetClick} 
         />
