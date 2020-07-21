@@ -12,6 +12,7 @@ class App extends React.Component {
       timerState: 'paused',
       sessionLength: 25,
       breakLength: 5
+      //test on feature/clock
     }
     // test for develop branch
     this.handleStartStopClick = this.handleStartStopClick.bind(this);
