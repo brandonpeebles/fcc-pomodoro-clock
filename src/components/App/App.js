@@ -36,7 +36,9 @@ class App extends React.Component {
   handleResetClick() {
     this.setState({
       label: 'Session',
-      timerState: 'paused'
+      timerState: 'paused',
+      sessionLength: 25,
+      breakLength: 5
     });
     this.clockElement.current.resetTimer();
   }
