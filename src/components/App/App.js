@@ -43,12 +43,12 @@ class App extends React.Component {
 
   handleTimerEnd() {
     if (this.state.label === 'Session') {
-      this.clockElement.current.resetTimer(this.state.breakLength * 60);
+      this.clockElement.current.resetTimer(this.state.breakLength);
       return this.setState({
         label: 'Break'
       });
     } else {
-      this.clockElement.current.resetTimer(this.state.sessionLength * 60);
+      this.clockElement.current.resetTimer(this.state.sessionLength);
       return this.setState({
         label: 'Session'
       });
@@ -58,36 +58,48 @@ class App extends React.Component {
   handleUpDownClick(e) {
     if (this.state.timerState === 'paused') {
       var clickedBtn = e.currentTarget.id;
-      // increment break
+      // increment break (reset timer if currently on Break)
       if (clickedBtn === 'break-increment') {
         if (this.state.breakLength < 60) {
-          return this.setState({
+          this.setState({
             breakLength: this.state.breakLength + 1
           })
         }
-      } 
-      // decrement break
+        if (this.state.label === 'Break') {
+          this.clockElement.current.resetTimer(this.state.breakLength);
+        }
+      }  
+      // decrement break (reset timer if currently on Break)
       if (clickedBtn === 'break-decrement') {
         if (this.state.breakLength > 1) {
-          return this.setState({
+          this.setState({
             breakLength: this.state.breakLength - 1
           })
         }
+        if (this.state.label === 'Break') {
+          this.clockElement.current.resetTimer(this.state.breakLength);
+        }
       } 
-      // increment session
+      // increment session (reset timer if currently on Session)
       if (clickedBtn === 'session-increment') {
         if (this.state.sessionLength < 60) {
-          return this.setState({
+          this.setState({
             sessionLength: this.state.sessionLength + 1
           })
         }
+        if (this.state.label === 'Session') {
+          this.clockElement.current.resetTimer();
+        }
       }
-      // decrement session
+      // decrement session (reset timer if currently on Session)
       if (clickedBtn === 'session-decrement') {
         if (this.state.sessionLength > 1) {
-          return this.setState({
+          this.setState({
             sessionLength: this.state.sessionLength - 1
           })
+        }
+        if (this.state.label === 'Session') {
+          this.clockElement.current.resetTimer();
         }
       } 
     }

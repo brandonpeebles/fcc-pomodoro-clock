@@ -9,9 +9,10 @@ class Clock extends React.Component {
         }
     }
 
-    resetTimer(time=(this.props.sessionLength * 60)) {
+    resetTimer(time=this.props.sessionLength) {
+        let timeSeconds = time * 60;
         this.setState({
-            timeRemaining: time
+            timeRemaining: timeSeconds
         });
     }
 
