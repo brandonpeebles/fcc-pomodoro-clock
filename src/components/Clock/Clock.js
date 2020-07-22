@@ -27,13 +27,24 @@ class Clock extends React.Component {
     }
 
     tick() {
-        if (this.props.timerState === 'running' && this.state.timeRemaining > 0) {
+        if (this.props.timerState === 'running' && this.state.timeRemaining > 1) {
             this.setState({
                 timeRemaining: this.state.timeRemaining - 1 // decrement by 1 second
             });
-        } else if (this.props.timerState === 'running' && this.state.timeRemaining === 0) {
+        } else if (this.props.timerState === 'running' && this.state.timeRemaining === 1) {
+            this.setState({
+                timeRemaining: this.state.timeRemaining - 1 // decrement by 1 second
+            });
+            this.playBeep();
+        } 
+        else if (this.props.timerState === 'running' && this.state.timeRemaining === 0) {
             this.props.handleTimerEnd();
         }
+    }
+
+    playBeep() {
+        const sound = document.getElementById("end-beep");
+        sound.play();
     }
 
     render() {
@@ -55,6 +66,12 @@ class Clock extends React.Component {
                         <i className="fa fa-undo fa-2x"></i>
                     </button>
                 </div>
+                <audio 
+                    id="end-beep" 
+                    preload="auto" 
+                    src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+                    className="clip"
+                />
             </div>
         );
     }

@@ -43,12 +43,12 @@ class App extends React.Component {
 
   handleTimerEnd() {
     if (this.state.label === 'Session') {
-      this.clockElement.current.resetTimer(this.state.breakLength * 60000);
+      this.clockElement.current.resetTimer(this.state.breakLength * 60);
       return this.setState({
         label: 'Break'
       });
     } else {
-      this.clockElement.current.resetTimer(this.state.sessionLength * 60000);
+      this.clockElement.current.resetTimer(this.state.sessionLength * 60);
       return this.setState({
         label: 'Session'
       });
