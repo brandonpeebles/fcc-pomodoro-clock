@@ -4,6 +4,34 @@ import './Clock.css';
 class Clock extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            timeRemaining: this.props.sessionLength * 60000
+        }
+    }
+
+    resetTimer(time=(this.props.sessionLength * 60000)) {
+        this.setState({
+            timeRemaining: time
+        });
+    }
+
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        if (this.props.timerState === 'running') {
+            this.setState({
+                timeRemaining: this.state.timeRemaining - 1000
+            });
+        }
     }
 
     render() {
@@ -16,7 +44,7 @@ class Clock extends React.Component {
         return(
             <div id="clock-container" className="rounded">
                 <h3 id="timer-label">{this.props.label}</h3>
-                <h2 id="time-left">00:00</h2>
+                <h2 id="time-left">{this.state.timeRemaining}</h2>
                 <div id="clock-controls">
                     <button id="start_stop" className="btn btn-success clockBtn" onClick={this.props.handleStartStopClick}>
                         {start_stop_icon}

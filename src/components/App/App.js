@@ -17,6 +17,8 @@ class App extends React.Component {
     this.handleStartStopClick = this.handleStartStopClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
     this.handleUpDownClick = this.handleUpDownClick.bind(this);
+    this.handleTimerEnd = this.handleTimerEnd.bind(this);
+    this.clockElement = React.createRef();
   }
 
   handleStartStopClick() {
@@ -32,11 +34,23 @@ class App extends React.Component {
   }
 
   handleResetClick() {
-    return this.setState({
+    this.setState({
       label: 'Session',
       timerState: 'paused'
-      // add a method call to change the timeRemaining state of the clock component
-    })
+    });
+    this.clockElement.current.resetTimer();
+  }
+
+  handleTimerEnd() {
+    if (this.state.label === 'Session') {
+      return this.setState({
+        label: 'Break'
+      });
+    } else {
+      return this.setState({
+        label: 'Session'
+      });
+    }
   }
 
   handleUpDownClick(e) {
@@ -85,8 +99,9 @@ class App extends React.Component {
           <BreakCtrl breakLength={this.state.breakLength} handleClick={this.handleUpDownClick} />
           <SeshCtrl sessionLength={this.state.sessionLength} handleClick={this.handleUpDownClick} />
         </div>
-        <Clock 
-          label={this.state.label} 
+        <Clock ref={this.clockElement}
+          label={this.state.label}
+          toggleLabel={this.handleTimerEnd}
           timerState={this.state.timerState} 
           sessionLength={this.state.sessionLength}
           breakLength={this.state.breakLength}
