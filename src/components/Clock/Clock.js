@@ -28,7 +28,6 @@ class Clock extends React.Component {
     }
 
     tick() {
-        console.log("timeRemaining before update: " + this.state.timeRemaining);
         if (this.props.timerState === 'running' && this.state.timeRemaining > 1) {
             this.setState({
                 timeRemaining: this.state.timeRemaining - 1 // decrement by 1 second
@@ -38,16 +37,15 @@ class Clock extends React.Component {
                 timeRemaining: this.state.timeRemaining - 1 // decrement by 1 second
             });
         } 
-        else if (this.props.timerState === 'running' && this.state.timeRemaining === 0) {
+        else if (this.props.timerState === 'running' && this.state.timeRemaining <= 0) {
             this.playBeep();
             setTimeout(1000);
             this.props.handleTimerEnd();
         }
-        console.log("timeRemaining after update: " + this.state.timeRemaining);
     }
 
     playBeep() {
-        const sound = document.getElementById("end-beep");
+        const sound = document.getElementById("beep");
         sound.play();
     }
 
@@ -78,7 +76,7 @@ class Clock extends React.Component {
                     </button>
                 </div>
                 <audio 
-                    id="end-beep" 
+                    id="beep" 
                     preload="auto" 
                     src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
                     className="clip"

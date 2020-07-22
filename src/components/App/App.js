@@ -39,8 +39,9 @@ class App extends React.Component {
       timerState: 'paused',
       sessionLength: 25,
       breakLength: 5
+    }, function () {
+      this.clockElement.current.resetTimer();
     });
-    this.clockElement.current.resetTimer();
   }
 
   handleTimerEnd() {
@@ -63,45 +64,41 @@ class App extends React.Component {
       // increment break (reset timer if currently on Break)
       if (clickedBtn === 'break-increment') {
         if (this.state.breakLength < 60) {
-          this.setState({
-            breakLength: this.state.breakLength + 1
-          })
-        }
-        if (this.state.label === 'Break') {
-          this.clockElement.current.resetTimer(this.state.breakLength);
+          this.setState({ breakLength: this.state.breakLength + 1 }, function () {
+            if (this.state.label === 'Break') {
+              this.clockElement.current.resetTimer(this.state.breakLength);
+            }
+          });
         }
       }  
       // decrement break (reset timer if currently on Break)
       if (clickedBtn === 'break-decrement') {
         if (this.state.breakLength > 1) {
-          this.setState({
-            breakLength: this.state.breakLength - 1
-          })
-        }
-        if (this.state.label === 'Break') {
-          this.clockElement.current.resetTimer(this.state.breakLength);
+          this.setState({ breakLength: this.state.breakLength - 1 }, function () {
+            if (this.state.label === 'Break') {
+              this.clockElement.current.resetTimer(this.state.breakLength);
+            }
+          });
         }
       } 
       // increment session (reset timer if currently on Session)
-      if (clickedBtn === 'session-increment') {
+      if (clickedBtn === 'session-increment') { 
         if (this.state.sessionLength < 60) {
-          this.setState({
-            sessionLength: this.state.sessionLength + 1
-          })
-        }
-        if (this.state.label === 'Session') {
-          this.clockElement.current.resetTimer();
+          this.setState({ sessionLength: this.state.sessionLength + 1 }, function () {
+            if (this.state.label === 'Session') {
+              this.clockElement.current.resetTimer(this.state.sessionLength);
+            }
+          });
         }
       }
       // decrement session (reset timer if currently on Session)
       if (clickedBtn === 'session-decrement') {
         if (this.state.sessionLength > 1) {
-          this.setState({
-            sessionLength: this.state.sessionLength - 1
-          })
-        }
-        if (this.state.label === 'Session') {
-          this.clockElement.current.resetTimer();
+          this.setState({ sessionLength: this.state.sessionLength - 1 }, function () {
+            if (this.state.label === 'Session') {
+              this.clockElement.current.resetTimer(this.state.sessionLength);
+            }
+          });
         }
       } 
     }
