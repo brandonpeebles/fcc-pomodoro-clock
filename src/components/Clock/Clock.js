@@ -5,11 +5,11 @@ class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            timeRemaining: this.props.sessionLength * 60000
+            timeRemaining: this.props.sessionLength * 60
         }
     }
 
-    resetTimer(time=(this.props.sessionLength * 60000)) {
+    resetTimer(time=(this.props.sessionLength * 60)) {
         this.setState({
             timeRemaining: time
         });
@@ -27,10 +27,12 @@ class Clock extends React.Component {
     }
 
     tick() {
-        if (this.props.timerState === 'running') {
+        if (this.props.timerState === 'running' && this.state.timeRemaining > 0) {
             this.setState({
-                timeRemaining: this.state.timeRemaining - 1000
+                timeRemaining: this.state.timeRemaining - 1 // decrement by 1 second
             });
+        } else if (this.props.timerState === 'running' && this.state.timeRemaining === 0) {
+            this.props.handleTimerEnd();
         }
     }
 

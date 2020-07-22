@@ -43,10 +43,12 @@ class App extends React.Component {
 
   handleTimerEnd() {
     if (this.state.label === 'Session') {
+      this.clockElement.current.resetTimer(this.state.breakLength * 60000);
       return this.setState({
         label: 'Break'
       });
     } else {
+      this.clockElement.current.resetTimer(this.state.sessionLength * 60000);
       return this.setState({
         label: 'Session'
       });
@@ -101,7 +103,7 @@ class App extends React.Component {
         </div>
         <Clock ref={this.clockElement}
           label={this.state.label}
-          toggleLabel={this.handleTimerEnd}
+          handleTimerEnd={this.handleTimerEnd}
           timerState={this.state.timerState} 
           sessionLength={this.state.sessionLength}
           breakLength={this.state.breakLength}
