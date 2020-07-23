@@ -1,3 +1,7 @@
+Pomodoro clock that allows you to customize the length of your focus and break sessions. Built in React JS according to freeCodeCamp specifications.
+
+Standard React README below:
+---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
