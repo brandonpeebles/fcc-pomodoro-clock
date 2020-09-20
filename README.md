@@ -8,7 +8,9 @@ Test out the live demo [here](https://peeblesbrandon.github.io/fcc-pomodoro-cloc
 In order to deploy on localhost, you will need to first clone the app and install the required npm packaged dependencies.  
 
 **Clone the repo:**  
-`git clone https://github.com/peeblesbrandon/fcc-pomodoro-clock.git`  
+```
+git clone https://github.com/peeblesbrandon/fcc-pomodoro-clock.git
+```  
 
 **Install server dependencies:**  
 ```
@@ -16,7 +18,9 @@ cd fcc-pomodoro-clock
 npm install
 ```  
 **Start app:**  
-`npm start`  
+```
+npm start
+```  
 
 ## Built with
 * ReactJS
